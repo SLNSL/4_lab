@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         SomeClass a = new SomeClass();
 
-        a.setMax(1);
+        a.setMax(2);
         System.out.println("max " + a.getMax());
 
         a.setOdd(21);

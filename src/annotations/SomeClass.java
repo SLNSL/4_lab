@@ -18,11 +18,15 @@ public class SomeClass {
 
     public void setMax(int max) throws MaxException{
         int n = 100000000;
-        Field[] fields = getClass().getDeclaredFields();
-        for (Field field : fields){
-            if (field.getName().equals("max") && (field.getAnnotation(Max.class) != null)){
-                n = field.getAnnotation(Max.class).n();
-            }
+        Field field = null;
+
+        try {
+           field = getClass().getDeclaredField("max");
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+        if (field.getAnnotation(Max.class) != null){
+            n = field.getAnnotation(Max.class).n();
         }
 
         if (max > n){
@@ -35,24 +39,26 @@ public class SomeClass {
         } else this.max = max;
     }
 
-
     public int getOdd() {
         return odd;
     }
 
     public void setOdd(int odd) throws OddException{
+        Field field = null;
+        try {
+            field = getClass().getDeclaredField("odd");
+        } catch (NoSuchFieldException e){
+            e.printStackTrace();
+        }
 
-        Field[] fields = getClass().getDeclaredFields();
-        for (Field field : fields){
-            if (field.getName().equals("odd") && field.getAnnotation(Odd.class) != null){
-                    if (odd % 2 == 0) {
-                        try {
-                            throw new OddException("Поле odd должно являтся нечётным");
-                        } catch (OddException e){
-                            System.err.println(e.getMessage());
-                        }
-                    } else this.odd = odd;
-            }
+        if (field.getAnnotation(Odd.class) != null){
+            if (odd % 2 == 0) {
+                try {
+                    throw new OddException("Поле odd должно являтся нечётным");
+                } catch (OddException e){
+                    System.err.println(e.getMessage());
+                }
+            } else this.odd = odd;
         }
     }
 
@@ -62,10 +68,13 @@ public class SomeClass {
     }
 
     public void setDevide(int devide) throws DevideException{
-
-        Field[] fields = getClass().getDeclaredFields();
-        for (Field field : fields){
-            if (field.getName().equals("devide") && field.getAnnotation(Devideble.class) != null){
+        Field field = null;
+        try {
+            field = getClass().getDeclaredField("devide");
+        } catch (NoSuchFieldException e){
+            e.printStackTrace();
+        }
+            if (field.getAnnotation(Devideble.class) != null){
                     if (devide % field.getAnnotation(Devideble.class).n() != 0){
                         try {
                             throw new DevideException("Поле devide должно делиться на " + field.getAnnotation(Devideble.class).n());
@@ -75,9 +84,6 @@ public class SomeClass {
 
                     } else this.devide = devide;
             }
-        }
-
-
-
     }
+
 }
