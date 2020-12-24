@@ -3,6 +3,7 @@ package enums;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 
 public enum ReasonToLove {
     VOICE("Говор толпы"),
@@ -10,7 +11,7 @@ public enum ReasonToLove {
     SMELL("Разнообразные запахи от прохожих");
 
     private String type;
-    private static ArrayList<ReasonToLove> reasons = new ArrayList<ReasonToLove>(EnumSet.allOf(ReasonToLove.class));
+    private static List<ReasonToLove> reasons = new ArrayList<ReasonToLove>(EnumSet.allOf(ReasonToLove.class));
 
 
     ReasonToLove(String TypeOfReason){
@@ -21,7 +22,7 @@ public enum ReasonToLove {
         return type;
     }
 
-    public static ArrayList<ReasonToLove> getReasons() {
+    public static List<ReasonToLove> getReasons() {
         return reasons;
     }
 }

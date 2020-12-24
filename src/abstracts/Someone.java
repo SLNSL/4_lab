@@ -18,11 +18,11 @@ public abstract class Someone implements HasName {
 
 
     @Override
-    public void setName(String nameOfSomeone) throws UncheckedExeption {
+    public void setName(String nameOfSomeone) throws WrongNameExeption {
         if(nameOfSomeone == nameOfSomeone.toLowerCase()){
             try{
-                throw new UncheckedExeption("Поле name у объектов должно начинаться с большой буквы");
-            } catch (UncheckedExeption e){
+                throw new WrongNameExeption("Поле name у объектов должно начинаться с большой буквы");
+            } catch (WrongNameExeption e){
                 e.printStackTrace();
             }
         }

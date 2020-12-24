@@ -25,11 +25,11 @@ public class Thing{
         return count;
     }
 
-    public void setCount(String count) throws CheckedExeption {
+    public void setCount(String count) throws NotNumberExeption {
         try {
             int n = Integer.parseInt(count);
         } catch (NumberFormatException | NullPointerException e){
-            throw new CheckedExeption("Count должен содержать только цифры");
+            throw new NotNumberExeption("Count должен содержать только цифры");
         }
         this.count = count;
     }

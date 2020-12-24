@@ -20,6 +20,12 @@ public class Dog extends Animal {
         this.owner = owner;
     }
 
+    public void doExercise(){
+        Action.doing(getName(), " бегает за существом: ", "Незнайка");
+        Action.doing(getName(), " прыгает через ", "кусты и цветочные клумбы");
+        setExercised(true);
+    }
+
     @Override
     public void setView(String view) {
         this.view = view;
@@ -36,8 +42,8 @@ public class Dog extends Animal {
     }
 
     @Override
-    public void setExercised(boolean exercised_) {
-        exercised = exercised_;
+    public void setExercised(boolean exercised) {
+        this.exercised = exercised;
     }
 
 

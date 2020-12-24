@@ -7,8 +7,8 @@ public enum Bugs {
 
     private String type;
 
-    Bugs(String type_) {
-        type = type_;
+    Bugs(String type) {
+        this.type = type;
     }
 
 

@@ -238,8 +238,8 @@ public class Main {
 			Action.doing(gardenWorker.getName(), "созданно");
 			Action.doing(mimishka.getName(), " делают ", "физ-зарядку");
 			Action.doing(roland.getName(), " делают ", "физ-зарядку");
-			DogsExercise.DoExercise(mimishka);
-			DogsExercise.DoExercise(roland);
+			mimishka.doExercise();
+			roland.doExercise();
 			if (mimishka.getExercised()) {
 				ResultOfExercises.ends(mimishka, gardenWorker);
 			}
@@ -307,12 +307,16 @@ public class Main {
 		//--------------------------------------------------------------------------------------
 		System.out.println();
 		//--------------------------------------------------------------------------------------
+
+
 		Thing pay = new Thing("фертингов");
 		try{
 			pay.setCount("5");
-		} catch(CheckedExeption e){
+		} catch(NotNumberExeption e){
 			e.printStackTrace();
 		}
+
+
 
 		Action.doing("Действительно,",hostess.getName(),"заплатила персонажу:",neznayka.getName() + " " + pay.getCount() + " " + pay.getName(),"как только прошла неделя");
 		Action.doing("Для персонажа " + neznayka.getName(),"это","была","большая радость");

@@ -18,8 +18,8 @@ public enum Places {
 
     private String name;
 
-    Places(String nameOfPlace){
-        name = nameOfPlace;
+    Places(String name){
+        this.name = name;
     }
 
     public String getName() {
