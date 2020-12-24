@@ -17,7 +17,6 @@ public class SomeClass {
     }
 
     public void setMax(int max) throws MaxException{
-        int n = 100000000;
         Field field = null;
 
         try {
@@ -25,16 +24,13 @@ public class SomeClass {
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
-        if (field.getAnnotation(Max.class) != null){
-            n = field.getAnnotation(Max.class).n();
-        }
-
-        if (max > n){
-            try {
-                throw new MaxException("Поле max больше задуманного");
-            }
-            catch(MaxException e){
-                System.err.println(e.getMessage());
+        if (field.getAnnotation(Max.class) != null) {
+            if (max > field.getAnnotation(Max.class).n()) {
+                try {
+                    throw new MaxException("Поле max больше задуманного");
+                } catch (MaxException e) {
+                    System.err.println(e.getMessage());
+                }
             }
         } else this.max = max;
     }
